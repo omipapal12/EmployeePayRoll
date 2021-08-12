@@ -56,5 +56,11 @@ public class NioApiTest {
                 .forEach(System.out::println);
 
     }
+    @Test
+    public void givenADirectoryWhenWatchedListAllActivities() throws IOException {
+        Path dir = Paths.get(HOME + "/" + PLAY_WITH_NIO);
+        Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+        new Java8ServiceWatchExample(dir).processEvents();
+    }
 
 }
